@@ -1,6 +1,6 @@
 ----------------------------------------
 -- bAutoTrash (Bampalicious @ Draenor EU)
--- 666.legion@gmail.com / https://github.com/bampalicious
+-- https://github.com/bampa
 ----------------------------------------
 
 local _, ns = ...
