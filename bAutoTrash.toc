@@ -1,0 +1,9 @@
+## Interface: 50200
+## Author: Bampalicious
+## Version: 1.0
+## Title: bAutoTrash
+## Notes: Automatically trashes items based on input, or from a defined list.
+## SavedVariablesPerCharacter: AutoTrash, bAutoTrashDB
+
+helpers.lua
+core.lua
