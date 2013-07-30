@@ -16,10 +16,10 @@ function ns.TrashItem(item)
 	for bag = 0, 4 do
 		for slot = 1, GetContainerNumSlots(bag) do
 			itemId = GetContainerItemID(bag, slot)
-			_, count, _, _, _, _, link = GetContainerItemInfo(bag, slot)
-			if(link) then
+			_,_,_,_,_,_, link = GetContainerItemInfo(bag, slot)			
+			if link	then
 				iName = GetItemInfo(itemId)
-				if(iName == name) then
+				if iName == name then
 					PickupContainerItem(bag, slot)
 					DeleteCursorItem()
 					deleted = true
@@ -27,7 +27,7 @@ function ns.TrashItem(item)
 			end			
 		end
 	end
-	if deleted then print("|cffe51616AutoTrash:|r Deleted item "..name) else end
+	if deleted then print("|cffade516bAutoTrash:|r Deleted item "..name) else end
 end
 
 function ns.TrashFromList()
@@ -45,10 +45,11 @@ function f:ADDON_LOADED(event, addon)
 	f:UnregisterEvent("ADDON_LOADED")
 end
 
-function f:CHAT_MSG_LOOT(event, message, chatLineId, ...)	
-	if string.find(message, "You receive") then 
+-- Probably not the cleanest way of doing this, but it's the only one that's worked for me...
+function f:CHAT_MSG_LOOT(event, message, chatLineId, ...)		
+	if AutoTrash then
 		local itemName = ns.Strip(message)		
-		if ns.Exists(itemName) and AutoTrash then ns.TrashItem(itemName) end		
+		if ns.Exists(itemName) then ns.Wait(1, ns.TrashItem, itemName) end
 	end
 end
 

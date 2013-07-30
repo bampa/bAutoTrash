@@ -22,15 +22,3 @@ Examples:
 * /trash Bear Meat *(removes all items with this name)*
 * /trash add [Bear Meat] *(adds an item from an item link to the AutoTrash list)*
 * /trash all *(trashes all items in your inventory based on the AutoTrash list)*
-
-Known issues:
--------------
-
-Using **/trash auto on**: items don't get deleted the first time they're looted. For example:
-You have added [Bear Meat] to the AutoTrash list and activated **/trash auto on**. In some (most?) cases
-when the [Bear Meat] is looted for the first time, it won't get automatically deleted from your inventory leaving
-you with one [Bear Meat] in your inventory. However, the next time you loot a [Bear Meat] both of them will be
-deleted.
-
-This is most likely caused by an delay from when the event is fired to when the item is actually ending up
-in your inventory.
