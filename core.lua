@@ -11,23 +11,17 @@ if AutoTrash == nil then AutoTrash = false end -- To automatically trash or not 
 if bAutoTrashDB == nil then bAutoTrashDB = {} end -- DB of items that are supposed to be trashed
 
 function ns.TrashItem(item)
-	name = ns.Strip(item)
-	local deteled = false
+	name = ns.Strip(item)	
 	for bag = 0, 4 do
-		for slot = 1, GetContainerNumSlots(bag) do
-			itemId = GetContainerItemID(bag, slot)
-			_,_,_,_,_,_, link = GetContainerItemInfo(bag, slot)			
-			if link	then
-				iName = GetItemInfo(itemId)
-				if iName == name then
-					PickupContainerItem(bag, slot)
-					DeleteCursorItem()
-					deleted = true
-				end
+		for slot = 1, GetContainerNumSlots(bag) do			
+			local tItem = GetContainerItemLink(bag, slot)
+			if tItem and tItem:find(name) then				
+				PickupContainerItem(bag, slot)
+				DeleteCursorItem()
+				print("|cffade516bAutoTrash:|r Deleted item "..name)				
 			end			
 		end
-	end
-	if deleted then print("|cffade516bAutoTrash:|r Deleted item "..name) else end
+	end	
 end
 
 function ns.TrashFromList()
