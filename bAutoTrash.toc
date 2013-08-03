@@ -3,7 +3,7 @@
 ## Version: 20130803
 ## Title: bAutoTrash
 ## Notes: Automatically trashes items based on input, or from a defined list.
-## SavedVariablesPerCharacter: AutoTrash, bAutoTrashDB
+## SavedVariablesPerCharacter: AutoTrash, bAutoTrashDB, AutoTrashValue
 
 helpers.lua
 core.lua

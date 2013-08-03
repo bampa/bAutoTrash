@@ -42,8 +42,19 @@ end
 -- Probably not the cleanest way of doing this, but it's the only one that's worked for me...
 function f:CHAT_MSG_LOOT(event, message, chatLineId, ...)		
 	if AutoTrash then
-		local itemName = ns.Strip(message)		
-		if ns.Exists(itemName) then ns.Wait(1, ns.TrashItem, itemName) end
+		local itemName = ns.Strip(message)
+		local quality = select(3, GetItemInfo(itemName))
+		if quality == 0 then			
+			if AutoTrashValue ~= nil then
+				local num = tonumber(AutoTrashValue)
+				local price = select(11, GetItemInfo(itemName))				
+				if num > 0 and price < num then				
+					ns.Wait(1, ns.TrashItem, itemName) 
+				end
+			end
+		else
+			if ns.Exists(itemName) then ns.Wait(1, ns.TrashItem, itemName) end
+		end
 	end
 end
 

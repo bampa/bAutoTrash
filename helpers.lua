@@ -28,13 +28,13 @@ function ns.SlashHandler(msg, editbox)
 				print("|cffade516bAutoTrash:|r Automatically trashing items!|r")
 			elseif arg == 'off' then
 				AutoTrash = false
-				print("|cffe51616bAutoTrash:|r Not automatically trashing items!|r")
+				print("|cffe51616bAutoTrash:|r Not automatically trashing items!|r")			
 			else
 				if AutoTrash then
 					print("|cffade516bAutoTrash:|r Currently automatically trashing items!|r")
 				else
 					print("|cffe51616bAutoTrash:|r Currently not automatically trashing items!|r")
-				end
+				end				
 			end		
 		elseif cmd == "add" then
 			if arg ~= '' and not ns.Exists(ns.Strip(arg)) then
@@ -62,7 +62,26 @@ function ns.SlashHandler(msg, editbox)
 			end		
 		elseif cmd == "clear" then
 			wipe(bAutoTrashDB)
-			print("|cffade516bAutoTrash:|r AutoTrash list cleared!")
+			print("|cffade516bAutoTrash:|r AutoTrash list cleared!")		
+		elseif cmd == "value" then
+			local value, t = arg:match("(%d+)(%w+)")
+			if t == "g" then 
+				AutoTrashValue = string.format("%d0000", value)
+				print("|cffade516bAutoTrash:|r AutoTrashValue is now set to " .. value .. t)
+			elseif t == "s" then
+				AutoTrashValue = string.format("%d00", value)
+				print("|cffade516bAutoTrash:|r AutoTrashValue is now set to " .. value .. t)
+			elseif t == "c" then
+				AutoTrashValue = value
+				print("|cffade516bAutoTrash:|r AutoTrashValue is now set to " .. value .. t)
+			else
+				if AutoTrashValue ~= nil then 
+					value, currency = ns.FormatCurrency(AutoTrashValue)
+					print("|cffade516bAutoTrash:|r AutoTrashValue is set to " .. value .. currency)
+				else
+					print("|cffe51616bAutoTrash:|r Please provide a correct value such as 1s!")
+				end
+			end
 		else			
 			ns.TrashItem(msg)
 		end
@@ -79,8 +98,17 @@ function ns.SlashHandler(msg, editbox)
 		print("/trash |cffade516[remove]|r itemname/link to remove an item from the AutoTrash list")
 		print("/trash |cffade516[list]|r to show all items in the AutoTrash list")
 		print("/trash |cffade516[clear]|r to clear the AutoTrash list")
-		
+		print("To automatically trash grey items below a certain value:")		
+		print("/trash |cffade516[value]|r [number][c/s/g] (e.g. 1s for 1 silver) or leave it blank to see the current value")
+		print("AutoTrash must be |cffade516ON|r as well to automatically trash grey items")
 	end
+end
+
+function ns.FormatCurrency(value)
+	local num = tonumber(value)
+	if num > 0 and num <= 99 then return value, "c"
+	elseif num >= 100 and num <= 9900 then return string.sub(value, 1,-3), "s"
+	elseif num >= 10000 then return string.sub(value, 1, -5), "g" end
 end
 
 -- Taken from http://www.wowwiki.com/Wait
