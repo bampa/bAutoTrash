@@ -15,7 +15,7 @@ Usage instructions:
 * /trash [remove] **item name or item link** *- to remove an item from the AutoTrash list*
 * /trash [list] *- to list all items in the AutoTrash list*
 * /trash [clear] *- to remove all items from the AutoTrash list*
-* /trash [value] [number][c/s/g]*- to automatically trash grey items with a value below [number][c/s/g] (requires /trash auto on)*
+* /trash [value] [number][c/s/g] *- to automatically trash grey items with a value below [number][c/s/g] **(requires /trash auto on)** *
 
 Examples:
 ---------
