@@ -15,7 +15,7 @@ Usage instructions:
 * /trash [remove] **item name or item link** *- to remove an item from the AutoTrash list*
 * /trash [list] *- to list all items in the AutoTrash list*
 * /trash [clear] *- to remove all items from the AutoTrash list*
-* /trash [value] [number][c/s/g]*- to automatically trash grey items with a value below [number][c/s/g] **(requires /trash auto on)***
+* /trash [value] [number][c/s/g]*- to automatically trash grey items with a value below [number][c/s/g] (requires /trash auto on)*
 
 Examples:
 ---------
@@ -23,4 +23,4 @@ Examples:
 * /trash Bear Meat *(removes all items with this name)*
 * /trash add [Bear Meat] *(adds an item from an item link to the AutoTrash list)*
 * /trash all *(trashes all items in your inventory based on the AutoTrash list)*
-* /trash value 1s *(will automatically trash all grey items with a value below 1 silver with **/trash auto on** enabled*
+* /trash value 1s *(will automatically trash all grey items with a value below 1 silver with /trash auto on enabled*
