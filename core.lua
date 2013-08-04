@@ -14,8 +14,8 @@ function ns.TrashItem(item)
 	name = ns.Strip(item)	
 	for bag = 0, 4 do
 		for slot = 1, GetContainerNumSlots(bag) do			
-			local tItem = GetContainerItemLink(bag, slot)
-			if tItem and tItem:find(name) then				
+			local tItem = GetContainerItemLink(bag, slot)			
+			if tItem and ns.Strip(tItem) == name then				
 				PickupContainerItem(bag, slot)
 				DeleteCursorItem()
 				print("|cffade516bAutoTrash:|r Deleted item "..name)				
