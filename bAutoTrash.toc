@@ -1,6 +1,6 @@
-## Interface: 50300
+## Interface: 50400
 ## Author: Bampalicious
-## Version: 20130804
+## Version: 20130911
 ## Title: bAutoTrash
 ## Notes: Automatically trashes items based on input, or from a defined list.
 ## SavedVariablesPerCharacter: AutoTrash, bAutoTrashDB, AutoTrashValue
